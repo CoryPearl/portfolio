@@ -1863,11 +1863,6 @@
             terminalInput.textContent = '';
           }
         });
-        // Give focus once on load for easy typing
-        window.addEventListener('load', () => {
-          terminalInput.focus();
-          if (terminalPath) terminalPath.textContent = '';
-        });
 
         // keep live prompt path in sync for the current line
         function updateLivePath() {
