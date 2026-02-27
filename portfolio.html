@@ -1,0 +1,1988 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cory Pearl - Developer Portfolio</title>
+    <link rel="icon" href="favicon.svg" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ===========================
+   VARIABLES & RESET
+   =========================== */
+      :root {
+        --bg-primary: #0c0c0c;
+        --bg-secondary: #0f0f0f;
+        --bg-tertiary: #141414;
+        --accent: #ff6b00;
+        --accent-dim: rgba(255, 107, 0, 0.5);
+        --text-primary: #e8e8e8;
+        --text-secondary: #888;
+        --text-dim: #555;
+        --border-color: #222;
+        --font-display: 'VT323', 'Share Tech Mono', monospace;
+        --font-body: 'Share Tech Mono', monospace;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* ===========================
+   NAVIGATION
+   =========================== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: var(--bg-primary);
+        border-bottom: 1px solid var(--border-color);
+        z-index: 1000;
+        padding: 0.75rem 0;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-family: var(--font-display);
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+      }
+
+      .bracket {
+        color: var(--accent);
+      }
+
+      .logo-text {
+        color: var(--text-primary);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.3s;
+        position: relative;
+        padding: 0.5rem 0;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--accent);
+      }
+
+      /* ===========================
+   SECTIONS
+   =========================== */
+      .section {
+        min-height: 100vh;
+        padding: 6rem 0;
+        position: relative;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .section-title {
+        font-family: var(--font-display);
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+        color: var(--text-primary);
+      }
+
+      .title-number {
+        color: var(--accent);
+        font-family: var(--font-display);
+        margin-right: 0.5rem;
+      }
+
+      /* ===========================
+   HOME SECTION
+   =========================== */
+      .home-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .glitch-wrapper {
+        margin-bottom: 1rem;
+      }
+
+      .hero-title {
+        font-family: var(--font-display);
+        font-size: 4rem;
+        color: var(--text-primary);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .subtitle {
+        font-size: 1.5rem;
+        color: var(--text-secondary);
+        margin-bottom: 3rem;
+        min-height: 2rem;
+      }
+
+      .typed-text {
+        color: var(--accent);
+      }
+
+      .cursor {
+        color: var(--accent);
+        animation: blink 0.7s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 4rem;
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        text-decoration: none;
+        border: 1px solid var(--border-color);
+        transition: all 0.2s;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: var(--bg-primary);
+        border-color: var(--accent);
+      }
+
+      .btn-primary:hover {
+        opacity: 0.9;
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text-secondary);
+      }
+
+      .btn-secondary:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .scroll-indicator {
+        text-align: center;
+        color: var(--text-dim);
+        font-size: 0.9rem;
+      }
+
+      .mouse {
+        width: 22px;
+        height: 36px;
+        border: 1px solid var(--text-dim);
+        border-radius: 12px;
+        margin: 0 auto 0.5rem;
+        position: relative;
+      }
+
+      .mouse::before {
+        content: '';
+        position: absolute;
+        width: 3px;
+        height: 6px;
+        background: var(--text-dim);
+        border-radius: 2px;
+        top: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: scroll 2s infinite;
+      }
+
+      @keyframes scroll {
+        0%,
+        20% {
+          top: 8px;
+          opacity: 1;
+        }
+        100% {
+          top: 24px;
+          opacity: 0;
+        }
+      }
+
+      /* ===========================
+   PROJECTS SECTION
+   =========================== */
+      .projects-section {
+        background: var(--bg-secondary);
+      }
+
+      .filter-container {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 0.6rem 1.5rem;
+        background: transparent;
+        border: 1px solid var(--border-color);
+        color: var(--text-secondary);
+        font-family: 'Share Tech Mono', monospace;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        border-radius: 4px;
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .projects-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+      }
+
+      .project-card {
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-color);
+        border-radius: 2px;
+        overflow: hidden;
+        transition: border-color 0.2s;
+        cursor: pointer;
+        flex: 0 1 calc(20% - 2rem);
+        max-width: 260px;
+      }
+
+      .project-card:hover {
+        border-color: var(--accent);
+      }
+
+      .project-image {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .project-image::before {
+        content: '00';
+        font-size: 3rem;
+        color: var(--accent-dim);
+        font-family: var(--font-display);
+      }
+
+      .project-image img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 107, 0, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+
+      .project-card:hover .project-overlay {
+        opacity: 1;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .project-link {
+        padding: 0.5rem 1.2rem;
+        background: var(--bg-primary);
+        color: var(--accent);
+        text-decoration: none;
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        border: 1px solid var(--bg-primary);
+        transition: all 0.2s;
+      }
+
+      .project-link:hover {
+        background: var(--text-primary);
+        color: var(--bg-primary);
+      }
+
+      .project-info {
+        padding: 1.5rem;
+      }
+
+      .project-title {
+        font-family: var(--font-display);
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+      }
+
+      .project-description {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .project-tech {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .tech-tag {
+        padding: 0.25rem 0.6rem;
+        background: transparent;
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        font-size: 0.7rem;
+      }
+
+      /* ===========================
+   SKILLS SECTION
+   =========================== */
+      .skills-section {
+        background: var(--bg-primary);
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .skill-category {
+        background: var(--bg-tertiary);
+        padding: 1.5rem;
+        border: 1px solid var(--border-color);
+        transition: border-color 0.2s;
+      }
+
+      .skill-category:hover {
+        border-color: var(--accent);
+      }
+
+      .category-title {
+        font-family: var(--font-display);
+        font-size: 1rem;
+        color: var(--accent);
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.05em;
+      }
+
+      .language-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .language-item {
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .language-item:hover .lang-name {
+        color: var(--accent);
+      }
+
+      .lang-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+      }
+
+      .lang-name {
+        font-family: var(--font-display);
+        color: var(--text-primary);
+        transition: color 0.2s;
+      }
+
+      .project-count {
+        color: var(--text-dim);
+        font-size: 0.9rem;
+      }
+
+      /* Terminal Display */
+      .terminal-display {
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-color);
+        overflow: hidden;
+        max-width: 700px;
+        margin: 2.5rem auto 0;
+      }
+
+      .terminal-header {
+        background: var(--bg-secondary);
+        padding: 0.8rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .terminal-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+
+      .terminal-dot.red {
+        background: #ff5f56;
+      }
+      .terminal-dot.yellow {
+        background: #ffbd2e;
+      }
+      .terminal-dot.green {
+        background: #27c93f;
+      }
+
+      .terminal-title {
+        margin-left: auto;
+        color: var(--text-dim);
+        font-size: 0.85rem;
+      }
+
+      .terminal-body {
+        padding: 1.5rem;
+        font-family: var(--font-body);
+        color: var(--text-secondary);
+      }
+
+      .prompt {
+        color: var(--accent);
+        margin-right: 0.5rem;
+      }
+
+      .terminal-output {
+        color: var(--text-primary);
+        margin: 1rem 0;
+        line-height: 1.8;
+      }
+      .terminal-input-line {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.5rem;
+      }
+      .terminal-input {
+        flex: 1;
+        outline: none;
+        border: none;
+        background: transparent;
+        color: var(--text-primary);
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        white-space: nowrap;
+        overflow: hidden;
+        caret-color: transparent;
+      }
+      .terminal-input::after {
+        content: '█';
+        color: var(--accent);
+        margin-left: 2px;
+        animation: blink 1s infinite;
+      }
+
+      .cursor-blink {
+        color: var(--accent);
+        animation: blink 1s infinite;
+      }
+
+      /* ===========================
+   ABOUT SECTION
+   =========================== */
+      .about-section {
+        background: var(--bg-secondary);
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .about-paragraph {
+        margin-bottom: 1.5rem;
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.8;
+      }
+
+      .highlight {
+        color: var(--accent);
+      }
+
+      .interests {
+        margin-top: 2rem;
+        padding: 1.25rem;
+        background: var(--bg-tertiary);
+        border-left: 2px solid var(--accent);
+      }
+
+      .interests-title {
+        font-family: var(--font-display);
+        color: var(--accent);
+        margin-bottom: 0.75rem;
+      }
+
+      .interests-list {
+        list-style: none;
+      }
+
+      .interests-list li {
+        padding: 0.5rem 0;
+        color: var(--text-secondary);
+        position: relative;
+        padding-left: 1.5rem;
+      }
+
+      .interests-list li::before {
+        content: '▹';
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+      }
+
+      .about-visual {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* About section: big interactive easter egg (simple CPU µarch map) */
+      .about-egg {
+        background: radial-gradient(
+          circle at top left,
+          #1b1b1b 0%,
+          #0f0f0f 45%,
+          #050505 100%
+        );
+        border: 1px solid var(--border-color);
+        padding: 1rem;
+        min-width: 280px;
+      }
+      .about-egg-title {
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        color: var(--accent-dim);
+        margin-bottom: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .about-egg-status {
+        font-family: var(--font-body);
+        font-size: 0.7rem;
+        color: var(--text-dim);
+        margin-top: 0.5rem;
+        min-height: 1em;
+      }
+      .about-egg-status.active {
+        color: var(--accent);
+      }
+      .about-egg-svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        color: var(--text-dim);
+      }
+      .about-egg-svg .block {
+        fill: rgba(255, 255, 255, 0.02);
+        stroke: rgba(255, 255, 255, 0.08);
+        stroke-width: 1;
+      }
+      .about-egg-svg .block-label {
+        font-family: var(--font-body);
+        font-size: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        fill: var(--text-dim);
+      }
+      .about-egg-svg .trace {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        opacity: 0.35;
+        stroke-dasharray: 3 3;
+      }
+      .about-egg-svg .trace.activated {
+        opacity: 1;
+        stroke: var(--accent);
+        stroke-dasharray: none;
+      }
+      .about-egg-svg .node {
+        fill: var(--bg-tertiary);
+        stroke: currentColor;
+        cursor: pointer;
+        transition:
+          fill 0.2s,
+          stroke 0.2s;
+      }
+      .about-egg-svg .node:hover {
+        fill: rgba(255, 107, 0, 0.35);
+      }
+      .about-egg-svg .node.activated {
+        fill: var(--accent);
+        stroke: var(--accent);
+        box-shadow: 0 0 8px rgba(255, 107, 0, 0.8);
+      }
+      .about-egg-svg .node.wrong {
+        fill: rgba(255, 80, 80, 0.3);
+        stroke: #f44;
+      }
+      .about-egg-svg .node-label {
+        font-family: var(--font-body);
+        font-size: 7px;
+        fill: var(--text-dim);
+        pointer-events: none;
+        text-anchor: middle;
+      }
+      .about-egg-svg .node.activated + .node-label {
+        fill: var(--accent);
+      }
+
+      /* ===========================
+   CONTACT SECTION
+   =========================== */
+      .contact-section {
+        background: var(--bg-primary);
+      }
+
+      .contact-content {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .contact-text {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+        line-height: 1.8;
+      }
+
+      .contact-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .contact-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        text-decoration: none;
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+      }
+
+      .contact-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .contact-btn svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      /* ===========================
+   FOOTER
+   =========================== */
+      .footer {
+        background: var(--bg-secondary);
+        padding: 2rem 0;
+        text-align: center;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .footer-text {
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-tech {
+        color: var(--text-dim);
+        font-size: 0.9rem;
+      }
+
+      /* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+      @media (max-width: 768px) {
+        .nav-links {
+          gap: 1rem;
+        }
+
+        .nav-link {
+          font-size: 0.8rem;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .subtitle {
+          font-size: 1.2rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .projects-grid {
+          justify-content: center;
+        }
+        .project-card {
+          flex: 0 1 calc(50% - 2rem);
+          max-width: 340px;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+        }
+
+        .btn {
+          text-align: center;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-links {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .nav-container {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .projects-grid {
+          justify-content: center;
+        }
+        .project-card {
+          flex: 0 1 100%;
+          max-width: none;
+        }
+
+        .hero-title {
+          font-size: 1.75rem;
+        }
+
+        .section {
+          padding: 4rem 0;
+        }
+      }
+
+      /* ===========================
+   UTILITY CLASSES
+   =========================== */
+      .hidden {
+        display: none !important;
+      }
+
+      .fade-in {
+        animation: fadeIn 0.5s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <span class="bracket">&lt;</span>
+          <span class="logo-text">DEV</span>
+          <span class="bracket">/&gt;</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section home-section">
+      <div class="container">
+        <h1 class="hero-title">CORY PEARL</h1>
+        <p class="subtitle">
+          <span class="typed-text"></span>
+          <span class="cursor">|</span>
+        </p>
+        <div class="cta-buttons">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
+        <div class="scroll-indicator">
+          <div class="mouse"></div>
+          <p>Scroll Down</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <h2 class="section-title">
+          <span class="title-number">01.</span> Projects
+        </h2>
+
+        <!-- Filter Buttons -->
+        <div class="filter-container">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="game">Game Dev</button>
+          <button class="filter-btn" data-filter="lowlevel">Low-Level</button>
+          <button class="filter-btn" data-filter="web">Web</button>
+          <button class="filter-btn" data-filter="hardware">Hardware</button>
+        </div>
+
+        <!-- Projects Grid: 2 rows of 4 -->
+        <div class="projects-grid">
+          <!-- cardiac -->
+          <div class="project-card" data-category="lowlevel">
+            <div class="project-image">
+              <img
+                src="assets/cardiac.png"
+                alt="Screenshot of cardiac project"
+              />
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a
+                    href="https://github.com/CoryPearl/cardiac"
+                    class="project-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Code</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">cardiac</h3>
+              <p class="project-description">
+                Simulation in C of the basic computer &quot;Cardiac&quot;.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">C</span>
+                <span class="tech-tag">Simulation</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- codesync -->
+          <div class="project-card" data-category="web">
+            <div class="project-image">
+              <img
+                src="assets/codesync.png"
+                alt="Screenshot of codesync project"
+              />
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a
+                    href="https://github.com/CoryPearl/codesync"
+                    class="project-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Code</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">codesync</h3>
+              <p class="project-description">
+                Real-time code collaboration and sync.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Web</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- GIG -->
+          <div class="project-card" data-category="web">
+            <div class="project-image">
+              <img src="assets/gig.png" alt="Screenshot of GIG project" />
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a
+                    href="https://github.com/CoryPearl/GIG"
+                    class="project-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Code</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">GIG</h3>
+              <p class="project-description">GIG (Github Idea Generator).</p>
+              <div class="project-tech">
+                <span class="tech-tag">Web</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- paint -->
+          <div class="project-card" data-category="web game">
+            <div class="project-image">
+              <img src="assets/paint.png" alt="Screenshot of paint project" />
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a
+                    href="https://github.com/CoryPearl/paint"
+                    class="project-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Code</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">paint</h3>
+              <p class="project-description">Drawing / paint-style app in C.</p>
+              <div class="project-tech">
+                <span class="tech-tag">Web</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- x86 Snake (row 2) -->
+          <div class="project-card" data-category="game lowlevel">
+            <div class="project-image">
+              <img
+                src="assets/snake86.png"
+                alt="Screenshot of x86 Snake project"
+              />
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a
+                    href="https://github.com/CoryPearl/x86_Snake"
+                    class="project-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Code</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">x86 Snake</h3>
+              <p class="project-description">
+                Snake in x86_64 NASM intel (never again.)
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Assembly</span>
+                <span class="tech-tag">NASM</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- asteroids -->
+          <div class="project-card" data-category="game">
+            <div class="project-image">
+              <img
+                src="assets/astroids.png"
+                alt="Screenshot of asteroids project"
+              />
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a
+                    href="https://github.com/CoryPearl/astroids"
+                    class="project-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Code</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">asteroids</h3>
+              <p class="project-description">Asteroids-style game.</p>
+              <div class="project-tech">
+                <span class="tech-tag">Game</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Minecraft in JS -->
+          <div class="project-card" data-category="game web">
+            <div class="project-image">
+              <img
+                src="assets/minecraft.png"
+                alt="Screenshot of Minecraft in JS project"
+              />
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a
+                    href="https://github.com/CoryPearl/minecraft-in-js"
+                    class="project-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Code</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Minecraft in JS</h3>
+              <p class="project-description">
+                Minecraft-inspired voxel game in JavaScript.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Game</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Conway's with GUI -->
+          <div class="project-card" data-category="game web">
+            <div class="project-image">
+              <img
+                src="assets/conway.png"
+                alt="Screenshot of Conway's with GUI project"
+              />
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a
+                    href="https://github.com/CoryPearl/conways-with-gui"
+                    class="project-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Code</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Conway&apos;s with GUI</h3>
+              <p class="project-description">
+                Conway&apos;s Game of Life with a graphical interface.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">GUI</span>
+                <span class="tech-tag">Simulation</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 3: ESP32 -->
+          <div class="project-card" data-category="hardware">
+            <div class="project-image">
+              <img
+                src="assets/esp32.png"
+                alt="Screenshot of esp32_programs project"
+              />
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a
+                    href="https://github.com/CoryPearl/esp32_programs"
+                    class="project-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Code</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">esp32_programs</h3>
+              <p class="project-description">
+                A collection of programs for the ESP32.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">C++</span>
+                <span class="tech-tag">ESP32</span>
+                <span class="tech-tag">Embedded</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 2rem; color: var(--text-dim); font-size: 0.9rem">
+          This is a small selection — you can find more projects on
+          <a
+            href="https://github.com/CoryPearl"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: var(--accent); text-decoration: none"
+            >GitHub</a
+          >.
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <h2 class="section-title">
+          <span class="title-number">02.</span> Skills & Languages
+        </h2>
+
+        <div class="skills-grid">
+          <!-- Systems Programming -->
+          <div class="skill-category">
+            <h3 class="category-title">Systems Programming</h3>
+            <div class="language-list">
+              <div class="language-item" data-lang="c">
+                <div class="lang-header">
+                  <span class="lang-name">C</span>
+                  <span class="project-count">5 projects</span>
+                </div>
+              </div>
+              <div class="language-item" data-lang="assembly">
+                <div class="lang-header">
+                  <span class="lang-name">AArch64 Assembly</span>
+                  <span class="project-count">3 projects</span>
+                </div>
+              </div>
+              <div class="language-item" data-lang="x86_64">
+                <div class="lang-header">
+                  <span class="lang-name">x86_64 Assembly</span>
+                  <span class="project-count">2 projects</span>
+                </div>
+              </div>
+              <div class="language-item" data-lang="shell">
+                <div class="lang-header">
+                  <span class="lang-name">Shell</span>
+                  <span class="project-count">4 projects</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Web Development -->
+          <div class="skill-category">
+            <h3 class="category-title">Web Development</h3>
+            <div class="language-list">
+              <div class="language-item" data-lang="javascript">
+                <div class="lang-header">
+                  <span class="lang-name">JavaScript</span>
+                  <span class="project-count">8 projects</span>
+                </div>
+              </div>
+              <div class="language-item" data-lang="html-css">
+                <div class="lang-header">
+                  <span class="lang-name">HTML/CSS</span>
+                  <span class="project-count">10 projects</span>
+                </div>
+              </div>
+              <div class="language-item" data-lang="sql">
+                <div class="lang-header">
+                  <span class="lang-name">SQL</span>
+                  <span class="project-count">3 projects</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Application Development -->
+          <div class="skill-category">
+            <h3 class="category-title">Application Development</h3>
+            <div class="language-list">
+              <div class="language-item" data-lang="python">
+                <div class="lang-header">
+                  <span class="lang-name">Python</span>
+                  <span class="project-count">6 projects</span>
+                </div>
+              </div>
+              <div class="language-item" data-lang="java">
+                <div class="lang-header">
+                  <span class="lang-name">Java</span>
+                  <span class="project-count">7 projects</span>
+                </div>
+              </div>
+              <div class="language-item" data-lang="swift">
+                <div class="lang-header">
+                  <span class="lang-name">Swift</span>
+                  <span class="project-count">2 projects</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Embedded Systems -->
+          <div class="skill-category">
+            <h3 class="category-title">Embedded Systems</h3>
+            <div class="language-list">
+              <div class="language-item" data-lang="arduino">
+                <div class="lang-header">
+                  <span class="lang-name">Arduino C++</span>
+                  <span class="project-count">4 projects</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal Display -->
+        <div class="terminal-display">
+          <div class="terminal-header">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+            <span class="terminal-title">skills.sh</span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="prompt">$</span> ls /languages</p>
+            <p class="terminal-output">
+              Python&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript&nbsp;&nbsp;&nbsp;HTML/CSS<br />
+              C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Swift&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AArch64&nbsp;&nbsp;x86_64<br />
+              Arduino-C++&nbsp;&nbsp;SQL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Shell
+            </p>
+            <p class="terminal-input-line">
+              <span class="prompt">$</span>
+              <span id="terminal-path"></span>
+              <span
+                id="terminal-input"
+                class="terminal-input"
+                contenteditable="true"
+                spellcheck="false"
+              ></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <h2 class="section-title">
+          <span class="title-number">03.</span> About Me
+        </h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p class="about-paragraph">
+              I'm a computer science enthusiast with a passion for
+              <span class="highlight">low-level programming</span>,
+              <span class="highlight">game development</span>, and
+              <span class="highlight">hardware</span>.
+            </p>
+            <p class="about-paragraph">
+              From writing assembly code for terminal games to building 3D
+              graphics engines and IoT dashboards, I love diving deep into how
+              computers work at every level of the stack.
+            </p>
+            <p class="about-paragraph">
+              When I'm not coding, you'll find me tinkering with Arduino
+              projects, speed cubing exploring graphics programming, or creating
+              quirky USB gadgets that make people smile (and occasionally
+              confuse their computers).
+            </p>
+            <div class="interests">
+              <h3 class="interests-title">Interests:</h3>
+              <ul class="interests-list">
+                <li>Assembly Language & Systems Programming</li>
+                <li>3D Graphics & Game Engines</li>
+                <li>Embedded Systems & Hardware</li>
+                <li>Multiplayer Web Applications</li>
+                <li>Computer Architecture</li>
+              </ul>
+            </div>
+          </div>
+          <div class="about-visual">
+            <div class="about-egg" id="about-egg" aria-hidden="true">
+              <div class="about-egg-title">[ CORE.MAP — SIMPLE CPU ]</div>
+              <svg
+                class="about-egg-svg"
+                viewBox="0 0 260 110"
+                fill="none"
+                stroke="currentColor"
+              >
+                <!-- Simple CPU pipeline diagram -->
+                <g class="traces">
+                  <path class="trace" data-seg="1" d="M20 55 H50" />
+                  <path class="trace" data-seg="2" d="M50 55 H80" />
+                  <path class="trace" data-seg="3" d="M80 55 V35" />
+                  <path class="trace" data-seg="4" d="M80 35 H110" />
+                  <path class="trace" data-seg="5" d="M110 35 H140" />
+                  <path class="trace" data-seg="6" d="M140 35 V55" />
+                  <path class="trace" data-seg="7" d="M140 55 H170" />
+                  <path class="trace" data-seg="8" d="M170 55 H200" />
+                  <path class="trace" data-seg="9" d="M200 55 H230" />
+                  <path class="trace" data-seg="10" d="M230 55 V80" />
+                  <path class="trace" data-seg="11" d="M230 80 H250" />
+                </g>
+                <!-- Clickable functional units (execution path) -->
+                <circle class="node" data-order="1" cx="20" cy="55" r="7" />
+                <text class="node-label" x="20" y="75">VCC</text>
+                <circle class="node" data-order="2" cx="50" cy="55" r="7" />
+                <text class="node-label" x="50" y="75">CLK</text>
+                <circle class="node" data-order="3" cx="80" cy="55" r="7" />
+                <text class="node-label" x="80" y="75">PC</text>
+                <circle class="node" data-order="4" cx="80" cy="35" r="7" />
+                <text class="node-label" x="80" y="23">L1I</text>
+                <circle class="node" data-order="5" cx="110" cy="35" r="7" />
+                <text class="node-label" x="110" y="23">DEC</text>
+                <circle class="node" data-order="6" cx="140" cy="35" r="7" />
+                <text class="node-label" x="140" y="23">REG</text>
+                <circle class="node" data-order="7" cx="140" cy="55" r="7" />
+                <text class="node-label" x="140" y="75">ALU</text>
+                <circle class="node" data-order="8" cx="170" cy="55" r="7" />
+                <text class="node-label" x="170" y="75">L1D</text>
+                <circle class="node" data-order="9" cx="200" cy="55" r="7" />
+                <text class="node-label" x="200" y="75">L2</text>
+                <circle class="node" data-order="10" cx="230" cy="55" r="7" />
+                <text class="node-label" x="230" y="45">RAM</text>
+                <circle class="node" data-order="11" cx="230" cy="80" r="7" />
+                <text class="node-label" x="230" y="100">BUS</text>
+                <circle class="node" data-order="12" cx="250" cy="80" r="7" />
+                <text class="node-label" x="250" y="100">OK</text>
+              </svg>
+              <div class="about-egg-status" id="about-egg-status">IDLE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <h2 class="section-title">
+          <span class="title-number">04.</span> Get In Touch
+        </h2>
+        <div class="contact-content">
+          <p class="contact-text">
+            I'm always open to discussing new projects, creative ideas, or
+            opportunities. Whether you want to collaborate or just say hi, feel
+            free to reach out!
+          </p>
+          <div class="contact-links">
+            <a
+              href="resume.pdf"
+              class="contact-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                ></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              Resume
+            </a>
+            <a href="https://github.com/corypearl" class="contact-btn">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                ></path>
+              </svg>
+              GitHub
+            </a>
+            <a
+              href="https://linkedin.com/in/cory-pearl-7063732b4"
+              class="contact-btn"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                ></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-text">
+          Designed & Built by <span class="highlight">Cory Pearl</span>
+        </p>
+        <p class="footer-tech">
+          <span class="bracket">&lt;</span>HTML + CSS + JS<span class="bracket"
+            >/&gt;</span
+          >
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // ===========================
+      // SMOOTH SCROLLING
+      // ===========================
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }
+        });
+      });
+
+      // ===========================
+      // PARTICLES ON HOME SECTION CLICK
+      // ===========================
+      const homeSection = document.getElementById('home');
+      function createParticles(x, y) {
+        const count = 10;
+        for (let i = 0; i < count; i++) {
+          const el = document.createElement('div');
+          el.style.cssText =
+            'position:fixed;left:' +
+            x +
+            'px;top:' +
+            y +
+            'px;width:4px;height:4px;background:#ff6b00;border-radius:50%;pointer-events:none;z-index:9999;';
+          document.body.appendChild(el);
+          const angle = (Math.PI * 2 * i) / count;
+          const speed = 2;
+          let vx = Math.cos(angle) * speed;
+          let vy = Math.sin(angle) * speed;
+          let px = x;
+          let py = y;
+          let opacity = 1;
+          function tick() {
+            px += vx;
+            py += vy;
+            opacity -= 0.02;
+            el.style.left = px + 'px';
+            el.style.top = py + 'px';
+            el.style.opacity = opacity;
+            if (opacity > 0) requestAnimationFrame(tick);
+            else el.remove();
+          }
+          requestAnimationFrame(tick);
+        }
+      }
+      if (homeSection) {
+        homeSection.addEventListener('click', (e) =>
+          createParticles(e.clientX, e.clientY),
+        );
+      }
+
+      // ===========================
+      // GLOBAL CURSOR TRAIL PARTICLES
+      // ===========================
+      let lastTrailTime = 0;
+      let lastX = null;
+      let lastY = null;
+
+      function createCursorTrail(x, y, vx, vy) {
+        const el = document.createElement('div');
+        el.style.cssText =
+          'position:fixed;left:' +
+          x +
+          'px;top:' +
+          y +
+          'px;width:4px;height:4px;background:#ff6b00;border-radius:999px;opacity:0.5;pointer-events:none;z-index:9998;filter:blur(1px);';
+        document.body.appendChild(el);
+        let life = 1;
+        function tick() {
+          life -= 0.03;
+          x -= vx * 0.4;
+          y -= vy * 0.4;
+          el.style.left = x + 'px';
+          el.style.top = y + 'px';
+          el.style.opacity = String(life);
+          if (life > 0) {
+            requestAnimationFrame(tick);
+          } else {
+            el.remove();
+          }
+        }
+        requestAnimationFrame(tick);
+      }
+
+      window.addEventListener('mousemove', (e) => {
+        const now = performance.now();
+        if (now - lastTrailTime < 16) return;
+        const { clientX: x, clientY: y } = e;
+        if (lastX === null) {
+          lastX = x;
+          lastY = y;
+          lastTrailTime = now;
+          return;
+        }
+        const vx = x - lastX;
+        const vy = y - lastY;
+        lastX = x;
+        lastY = y;
+        lastTrailTime = now;
+        createCursorTrail(x, y, vx, vy);
+      });
+
+      // ===========================
+      // ACTIVE NAV LINK ON SCROLL
+      // ===========================
+      const sections = document.querySelectorAll('.section');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      function updateActiveLink() {
+        let current = '';
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (window.pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateActiveLink);
+
+      // ===========================
+      // TYPING EFFECT
+      // ===========================
+      const typedTextElement = document.querySelector('.typed-text');
+      const texts = [
+        'Systems Programmer',
+        'Game Developer',
+        'Hardware Enthusiast',
+        'Full-Stack Developer',
+        'Assembly Enthusiast',
+      ];
+
+      let textIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let typingDelay = 100;
+
+      function type() {
+        const currentText = texts[textIndex];
+
+        if (isDeleting) {
+          typedTextElement.textContent = currentText.substring(
+            0,
+            charIndex - 1,
+          );
+          charIndex--;
+          typingDelay = 50;
+        } else {
+          typedTextElement.textContent = currentText.substring(
+            0,
+            charIndex + 1,
+          );
+          charIndex++;
+          typingDelay = 100;
+        }
+
+        if (!isDeleting && charIndex === currentText.length) {
+          isDeleting = true;
+          typingDelay = 2000;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          textIndex = (textIndex + 1) % texts.length;
+          typingDelay = 500;
+        }
+
+        setTimeout(type, typingDelay);
+      }
+
+      setTimeout(type, 1000);
+
+      // ===========================
+      // PROJECT FILTERING
+      // ===========================
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          filterButtons.forEach((btn) => btn.classList.remove('active'));
+          button.classList.add('active');
+
+          const filterValue = button.getAttribute('data-filter');
+
+          projectCards.forEach((card) => {
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.9)';
+
+            setTimeout(() => {
+              if (filterValue === 'all') {
+                card.style.display = 'block';
+              } else {
+                const categories = card
+                  .getAttribute('data-category')
+                  .split(' ');
+                if (categories.includes(filterValue)) {
+                  card.style.display = 'block';
+                } else {
+                  card.style.display = 'none';
+                }
+              }
+
+              setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+              }, 50);
+            }, 300);
+          });
+        });
+      });
+
+      projectCards.forEach((card) => {
+        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      });
+
+      // ===========================
+      // LANGUAGE ITEM CLICK
+      // ===========================
+      const languageItems = document.querySelectorAll('.language-item');
+      const terminalInput = document.getElementById('terminal-input');
+      const terminalOutput = document.querySelector('.terminal-output');
+      const terminalPath = document.getElementById('terminal-path');
+      const initialTerminalListing = terminalOutput
+        ? terminalOutput.innerHTML.trim()
+        : '';
+
+      languageItems.forEach((item) => {
+        item.addEventListener('click', () => {
+          const langName = item
+            .querySelector('.lang-name')
+            .textContent.toLowerCase();
+
+          document.querySelector('#projects').scrollIntoView({
+            behavior: 'smooth',
+          });
+
+          setTimeout(() => {
+            const langToCategory = {
+              c: 'lowlevel',
+              'aarch64 assembly': 'lowlevel',
+              'x86_64 assembly': 'lowlevel',
+              shell: 'lowlevel',
+              javascript: 'web',
+              'html/css': 'web',
+              sql: 'web',
+              python: 'all',
+              java: 'game',
+              swift: 'all',
+              'arduino c++': 'hardware',
+            };
+
+            const category = langToCategory[langName] || 'all';
+
+            const targetButton = document.querySelector(
+              `[data-filter="${category}"]`,
+            );
+            if (targetButton) {
+              targetButton.click();
+            }
+          }, 1000);
+        });
+      });
+
+      // ===========================
+      // SKILLS TERMINAL INPUT (mini shell)
+      // ===========================
+      if (terminalInput && terminalOutput) {
+        let currentDir = '~';
+
+        function renderPrompt() {
+          const path = currentDir === '~' ? '' : `<span>~/languages</span> `;
+          return `<br /><span class="prompt">$</span> ${path}`;
+        }
+
+        function appendOutput(lineHtml) {
+          terminalOutput.innerHTML += lineHtml;
+        }
+
+        terminalInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            const cmd = terminalInput.textContent.trim();
+            appendOutput(renderPrompt() + cmd);
+
+            if (cmd === './main') {
+              appendOutput('<br />Hello World!');
+            } else if (cmd === 'ls' || cmd === 'ls -la') {
+              if (currentDir === '~') {
+                appendOutput('<br />languages');
+              } else {
+                appendOutput('<br />' + initialTerminalListing);
+              }
+            } else if (cmd === 'cd languages' && currentDir === '~') {
+              currentDir = 'languages';
+              updateLivePath();
+            } else if (
+              (cmd === 'cd ..' || cmd === 'cd ~') &&
+              currentDir === 'languages'
+            ) {
+              currentDir = '~';
+              updateLivePath();
+            } else if (cmd === '' || cmd === 'clear') {
+              if (cmd === 'clear') {
+                terminalOutput.innerHTML = initialTerminalListing;
+              }
+            } else {
+              appendOutput('<br />command not found');
+            }
+
+            terminalInput.textContent = '';
+          }
+        });
+        // Give focus once on load for easy typing
+        window.addEventListener('load', () => {
+          terminalInput.focus();
+          if (terminalPath) terminalPath.textContent = '';
+        });
+
+        // keep live prompt path in sync for the current line
+        function updateLivePath() {
+          if (!terminalPath) return;
+          terminalPath.textContent = currentDir === '~' ? '' : '~/languages ';
+        }
+        updateLivePath();
+
+        // patch cd handlers to update path
+        const originalHandler = terminalInput.onkeydown;
+      }
+
+      // ===========================
+      // SCROLL ANIMATIONS
+      // ===========================
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px',
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+
+      document.querySelectorAll('.skill-category').forEach((category) => {
+        observer.observe(category);
+      });
+
+      function activateEasterEgg() {
+        document.documentElement.style.setProperty('--accent', '#00ff00');
+        const message = document.createElement('div');
+        message.textContent = 'HACKER MODE';
+        message.style.position = 'fixed';
+        message.style.top = '50%';
+        message.style.left = '50%';
+        message.style.transform = 'translate(-50%, -50%)';
+        message.style.fontSize = '1.5rem';
+        message.style.color = '#00ff00';
+        message.style.fontFamily = "'VT323', monospace";
+        message.style.zIndex = '10000';
+        message.style.letterSpacing = '0.2em';
+        document.body.appendChild(message);
+        setTimeout(() => {
+          message.remove();
+          document.documentElement.style.setProperty('--accent', '#ff6b00');
+        }, 3000);
+      }
+
+      // ===========================
+      // EASTER EGG: ABOUT SECTION — SIMPLE CPU µARCH (trace an execution path)
+      // ===========================
+      const aboutEgg = document.getElementById('about-egg');
+      const aboutEggStatus = document.getElementById('about-egg-status');
+      const aboutNodes = aboutEgg ? aboutEgg.querySelectorAll('.node') : [];
+      const aboutTraces = aboutEgg ? aboutEgg.querySelectorAll('.trace') : [];
+      // Puzzle: follow a single cache‑hit execution path
+      // VCC → CLK → PC → L1I → DECODE → REG → ALU → L1D → L2 → RAM → BUS → OK
+      const aboutOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+      let aboutStep = 0;
+
+      function resetAboutEgg() {
+        aboutStep = 0;
+        aboutNodes.forEach((n) => n.classList.remove('activated', 'wrong'));
+        aboutTraces.forEach((t) => t.classList.remove('activated'));
+        if (aboutEggStatus) {
+          aboutEggStatus.textContent = 'IDLE';
+          aboutEggStatus.classList.remove('active');
+        }
+      }
+
+      if (aboutEgg && aboutNodes.length) {
+        aboutNodes.forEach((node) => {
+          node.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const order = parseInt(node.getAttribute('data-order'), 10);
+            if (order === aboutOrder[aboutStep]) {
+              node.classList.remove('wrong');
+              node.classList.add('activated');
+              const seg = aboutEgg.querySelector(
+                `.trace[data-seg="${aboutStep + 1}"]`,
+              );
+              if (seg) seg.classList.add('activated');
+              aboutStep++;
+              if (aboutEggStatus) {
+                aboutEggStatus.textContent =
+                  'TRACE ' + aboutStep + '/' + aboutOrder.length;
+                aboutEggStatus.classList.add('active');
+              }
+              if (aboutStep === aboutOrder.length) {
+                activateEasterEgg();
+                setTimeout(resetAboutEgg, 3500);
+              }
+            } else {
+              node.classList.add('wrong');
+              setTimeout(() => node.classList.remove('wrong'), 400);
+              resetAboutEgg();
+              if (aboutEggStatus) aboutEggStatus.textContent = 'NOISE';
+            }
+          });
+        });
+      }
+
+      console.log('%cPortfolio', 'color: #ff6b00; font-size: 14px;');
+      console.log(
+        '%cPuzzle: trace a cache‑hit execution from VCC through the core to OK.',
+        'color: #555; font-size: 11px;',
+      );
+    </script>
+  </body>
+</html>
